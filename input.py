@@ -12,7 +12,8 @@ note_to_audio = {
     62: pygame.mixer.Sound('Audio/trollface.mp3'),
     64: pygame.mixer.Sound('Audio/disconnect.mp3'),
     65: pygame.mixer.Sound('Audio/roblox.mp3'),
-    67: pygame.mixer.Sound('Audio/rickroll.mp3')
+    67: pygame.mixer.Sound('Audio/rickroll.mp3'),
+    69: pygame.mixer.Sound('Audio/bruh.mp3')
 }
 
 # Listen for messages from the MIDI device
