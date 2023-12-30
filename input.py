@@ -8,11 +8,11 @@ pygame.mixer.init()
 
 # Create a dictionary mapping note numbers to audio files
 note_to_audio = {
-    60: pygame.mixer.Sound('connect.mp3'),
-    62: pygame.mixer.Sound('trollface.mp3'),
-    64: pygame.mixer.Sound('disconnect.mp3'),
-    65: pygame.mixer.Sound('roblox.mp3'),
-    67: pygame.mixer.Sound('rickroll.mp3')
+    60: pygame.mixer.Sound('Audio/connect.mp3'),
+    62: pygame.mixer.Sound('Audio/trollface.mp3'),
+    64: pygame.mixer.Sound('Audio/disconnect.mp3'),
+    65: pygame.mixer.Sound('Audio/roblox.mp3'),
+    67: pygame.mixer.Sound('Audio/rickroll.mp3')
 }
 
 # Listen for messages from the MIDI device
