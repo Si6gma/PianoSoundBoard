@@ -6,22 +6,25 @@ import time
 inport = mido.open_input('Digital Keyboard')
 pygame.mixer.init()
 
-# # Create a dictionary mapping note numbers to audio files
+# Create a dictionary mapping note numbers to audio files
 note_to_audio = {
-    60: 'connect.mp3',
-    62: 'trollface.mp3',
-    64: 'disconnect.mp3'
+    60: pygame.mixer.Sound('connect.mp3'),
+    62: pygame.mixer.Sound('trollface.mp3'),
+    64: pygame.mixer.Sound('disconnect.mp3'),
+    65: pygame.mixer.Sound('roblox.mp3'),
+    67: pygame.mixer.Sound('rickroll.mp3')
 }
 
 # Listen for messages from the MIDI device
 for msg in inport:
-    # If the message is a note on message and the velocity is greater than 0
-    if msg.type == 'note_on' and msg.velocity > 0:
-        print('Note on:', msg.note)
-        # If the note is in the dictionary, play the corresponding audio file
-        if msg.note in note_to_audio:
-            audio_file_path = note_to_audio[msg.note]
-            pygame.mixer.music.load(audio_file_path)
-            pygame.mixer.music.play()
-            while pygame.mixer.music.get_busy():
-                time.sleep(0.1)
+    # If the message is a note on message
+    if msg.type == 'note_on':
+        # If the velocity is greater than 0 (key press), play the corresponding audio file
+        if msg.velocity > 0:
+            print('Note on:', msg.note)
+            if msg.note in note_to_audio:
+                note_to_audio[msg.note].play()
+        # If the velocity is 0 (key release), stop the audio
+        else:
+            if msg.note in note_to_audio:
+                note_to_audio[msg.note].stop()
